@@ -7,13 +7,28 @@ inquirer
     .prompt([
         {
             type: 'input',
-            message: 'Who is your team member?',
+            message: "What is your team member's name?",
             name: 'team'
         },
         {
             type: 'input',
-            message: 'What is their email address?',
+            message: "What is your team member's id?",
+            name: 'id'
+        },
+        {
+            type: 'input',
+            message: "What is your team member's email address?", 
             name: 'email'
+        },
+        {
+            type: 'input',
+            message: "What is your team member's office number?",
+            name: 'office'
+        },
+        {
+            type: 'input',
+            message: "What type of team member is this?",
+            name: 'this'
         },
     ])
     .then(response => {
