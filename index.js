@@ -32,7 +32,13 @@ inquirer
         },
     ])
     .then(response => {
-        const content = ``;
+        const content = `
+        ${response.team}
+        ${response.id}
+        ${response.email}
+        ${response.office}
+        ${response.this}
+        `;
 
          // creates HTML file
          fs.writeFile('index.html', content, err => {
