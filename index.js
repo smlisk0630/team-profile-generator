@@ -3,32 +3,38 @@ const inquirer = require('inquirer');
 const jest = require('jest');
 
 // Inputs for the command line
-inquirer
+const manager = inquirer
     .prompt([
         {
             type: 'input',
-            message: "What is your team member's name?",
+            message: "What is the team manager's name?",
             name: 'team'
         },
         {
             type: 'input',
-            message: "What is your team member's id?",
+            message: "What is the team manager's id?",
             name: 'id'
         },
         {
             type: 'input',
-            message: "What is your team member's email address?", 
+            message: "What is the team manager's email address?", 
             name: 'email'
         },
         {
             type: 'input',
-            message: "What is your team member's office number?",
+            message: "What is the team manager's office number?",
             name: 'office'
         },
         {
             type: 'input',
-            message: "What type of team member is this?",
+            message: "What type of team manager is this?",
             name: 'this'
+        },
+        {
+            type: 'checkbox',
+            message: "Would you like to select an intern or an engineer?",
+            name: 'next-menu',
+            choices: ["Intern", "Engineer"]
         },
     ])
     .then(response => {
@@ -38,11 +44,15 @@ inquirer
         ${response.email}
         ${response.office}
         ${response.this}
+        ${response.next-menu}
         `;
 
          // creates HTML file
-         fs.writeFile('index.html', content, err => {
+         fs.writeFile('dist/index.html', content, err => {
             if (err) console.log(err);
             else console.log('success!');
         });
     });
+    for(const prompt of manager){
+
+    }

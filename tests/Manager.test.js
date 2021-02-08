@@ -4,7 +4,7 @@ const ind = require('../index');
 
 describe('index', () => {
     describe('response', () => {
-        it('should display prompts for user input in terminal', () => {
+        it('should display Manager prompts for user input in terminal', () => {
             const result = ind.response();
             expect(result).toEqual();
         });
