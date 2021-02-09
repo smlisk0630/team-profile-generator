@@ -1,4 +1,4 @@
-const Generator = require('./lib/generator');
+const Generator = require('./lib/Generator');
 
 // Initialize new profile Generator object
 const generator = new Generator();

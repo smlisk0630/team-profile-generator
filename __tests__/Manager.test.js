@@ -1,11 +1,11 @@
 const { expect, it } = require('@jest/globals');
 const { describe } = require('yargs');
-const ind = require('../index');
+const Manager = require('../lib/Manager');
 
-describe('index', () => {
+describe('Manager class', () => {
     describe('response', () => {
-        it('should display Manager prompts for user input in terminal', () => {
-            const result = ind.response();
+        it('Should display Manager prompts for user input in terminal', () => {
+            const result = Manager.response();
             expect(result).toEqual();
         });
     });
