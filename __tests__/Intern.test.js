@@ -1,14 +1,14 @@
 const { expect, it, test } = require('@jest/globals');
-const Manager = require('../lib/Manager');
+const Intern = require('../lib/Intern');
 
 jest.mock('inquirer');
-// Should be teamMember class?
+
 describe('Intern class', () => {
     test('Should return user input values', () => {
-        const manager = new Intern('John Doe', 'jdoe@example.com', 123, 'jDoe123');
-        expect(manager.name).toBe('John Doe');
-        expect(manager.email).toBe('jdoe@example.com');
-        expect(manager.id).toBe(123);
-        expect(manager.username).toBe('jDoe123');
+        const intern = new Intern('John Doe', 'jdoe@example.com', 123, 'jDoe123');
+        expect(intern.name).toBe('John Doe');
+        expect(intern.email).toBe('jdoe@example.com');
+        expect(intern.id).toBe(123);
+        expect(intern.username).toBe('jDoe123');
     });
 });
