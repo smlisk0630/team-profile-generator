@@ -27,8 +27,8 @@ const managerPrompts = inquirer
             type: 'input',
             message: "What is the team manager's id?",
             name: 'id',
-            validate: function (managerResponse) {
-                if (managerResponse.id < 1) {
+            validate: function (id) {
+                if (id < 1) {
                     return "Please enter a positive integer great than zero.";
                 }
                 return true;
@@ -41,7 +41,6 @@ const managerPrompts = inquirer
         },
     ])
     // Inputs for team prompts
-
     .then(managerResponse => {
         const teamPrompts = inquirer
             .prompt([
@@ -69,32 +68,33 @@ const managerPrompts = inquirer
                 {
                     type: 'input',
                     message: "What is your [team member's] GitHub username?",
-                    name: 'office'
-                },
-                {
-                    type: 'input',
-                    message: "What type of team manager is this?",
-                    name: 'this'
+                    name: 'github'
                 },
             ])
-            .then(teamResponse => {
+            .then(managerResponse => {
+                // Content appearing in profile
                 const content = `
         ${managerResponse.name}
         ${managerResponse.id}
-        ${managerResponse.id}
         ${managerResponse.email}
-        ${managerResponse.office}
+        ${managerResponse.officeNumber}
         `;
-                // ${response.this}
-                // ${response.next - menu}
-
-                // creates HTML file
-                fs.writeFile('dist/index.html', content, err => {
-                    if (err) console.log(err);
-                    else console.log('success!');
+        .then(teamResponse => {
+                    // Content appearing in profile
+                    const content = `
+    ${teamResponse.team}
+    ${teamResponse.id}
+    ${teamResponse.email}
+    ${teamResponse.github}
+    `;
+                    // creates HTML file
+                    fs.writeFile('dist/index.html', content, err => {
+                        if (err) console.log(err);
+                        else console.log('success!');
+                    });
+                    console.log(managerResponse);
+                    console.log(teamResponse);
                 });
-                console.log(managerResponse);
-            });
     });
     // for(const prompt of manager){
 
