@@ -1,3 +1,5 @@
+const Employee = require('../lib/Employee.js');
+
 // Creates row in which profile cards will live
 rowTemplate(contents => {
     `<section class="row justify-content-center">${contents}</section>`
@@ -6,7 +8,18 @@ rowTemplate(contents => {
 // Creates profile card
 function cardTemplate(user) {
     return `
-
+    <section class="col">
+        <section class="card">
+            <section class="card-body">
+                <h5 class="card-title">${Employee.getName()}</h5>
+                    <p class="card-text">${Employee.getRole()}</p>
+                    <p class="card-text">${Employee.getId()}</p>
+                    <p class="card-text">Email: <a href="mailto:${Employee.getEmail()}">${Employee.getEmail()}</a></p>
+                    <p class="card-text">${Employee.getGitHub()}</p>
+                    <p class="card-text">${Employee.getSchool()}</p>
+            </section>
+        </section>
+    </section>
     `
 }
 // Creates HTML page structure
