@@ -4,6 +4,7 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
+const Templates = require('./src/templates');
 const managerArray = [];
 const teamArray = [];
 
@@ -135,9 +136,12 @@ function internPrompts() {
             createTeam();
         });
 }
+
+managerPrompts();
+
 // creates HTML file
-function buildHTML() {
-    fs.writeFile('dist/index.html', content, err => {
+function buildHTML(contents) {
+    fs.writeFile(contents + 'dist/index.html', Templates.toString(createHTML(teamArray)), err => {
         if (err) console.log(err);
         else console.log('success!');
     });

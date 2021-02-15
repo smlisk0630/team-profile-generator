@@ -1,7 +1,7 @@
 const Employee = require('../lib/Employee.js');
 
 // Creates row in which profile cards will live
-rowTemplate(contents => {
+const rowTemplate = (contents => {
     `<section class="row justify-content-center">${contents}</section>`
 });
 
@@ -23,7 +23,7 @@ function cardTemplate(user) {
     `
 }
 // Creates HTML page structure
-function createHTML() {
+function createHTML(contents) {
     const starter = `
 <!DOCTYPE html>
 <html lang="en">
@@ -44,4 +44,10 @@ function createHTML() {
     </section>
 </body>
     `
+}
+
+module.exports = {
+    rowTemplate: rowTemplate,
+    cardTemplate: cardTemplate,
+    createHTML: createHTML
 }
