@@ -140,9 +140,20 @@ function internPrompts() {
 managerPrompts();
 
 // creates HTML file
-function buildHTML(contents) {
-    fs.writeFile(contents + 'dist/index.html', Templates.toString(createHTML(teamArray)), err => {
+// function buildHTML(contents) {
+//     fs.writeFile(contents + 'dist/index.html', Templates.toString(createHTML(teamArray)), err => {
+//         if (err) console.log(err);
+//         else console.log('success!');
+//     });
+// }
+
+// creates HTML file
+const { createHTML } = require("./src/templates");
+// creates HTML file
+function buildHTML() {
+    const html = createHTML();
+    fs.writeFile("dist/index.html", html, (err) => {
         if (err) console.log(err);
-        else console.log('success!');
+        else console.log("success!");
     });
 }
