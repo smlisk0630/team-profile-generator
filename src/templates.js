@@ -1,28 +1,5 @@
 const Employee = require('../lib/Employee.js');
 
-// Creates row in which profile cards will live
-// const rowTemplate = (contents => {
-//     `<section class="row justify-content-center">${contents}</section>`
-// });
-
-// Creates profile card
-// function cardTemplate(employee) {
-//     return `
-//     <section class="col">
-//         <section class="card">
-//             <section class="card-body">
-//                 <h5 class="card-title">${employee.getName()}</h5>
-//                     <p class="card-text">${employee.getRole()}</p>
-//                     <p class="card-text">${employee.getId()}</p>
-//                     <p class="card-text">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></p>
-//                     <p class="card-text">${employee.getGitHub()}</p>
-//                     <p class="card-text">${employee.getSchool()}</p>
-//             </section>
-//         </section>
-//     </section>
-//     `
-// }
-
 // Creates manager card
 function managerCardTemplate(manager) {
     return `
@@ -122,7 +99,6 @@ function createHTML(teamArray,manager) {
         }
         return header+managerSection+employeeSection+footer;  
       }
-
 
 module.exports = {
     //rowTemplate: rowTemplate,
