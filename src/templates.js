@@ -1,9 +1,9 @@
 const Employee = require('../lib/Employee.js');
 
 // Creates row in which profile cards will live
-const rowTemplate = (contents => {
-    `<section class="row justify-content-center">${contents}</section>`
-});
+// const rowTemplate = (contents => {
+//     `<section class="row justify-content-center">${contents}</section>`
+// });
 
 // Creates profile card
 // function cardTemplate(employee) {
@@ -23,17 +23,41 @@ const rowTemplate = (contents => {
 //     `
 // }
 
+// Creates manager card
+function managerCardTemplate(manager) {
+    return `
+    <section class="row justify-content-center row-cols-1 row-cols-md-2 g-4">
+        <section class="col">
+            <section class="card text-center">
+                <section class="card-header" style="background-color: purple; color: white">
+                        <h5 class="card-title">${manager.getName()}</h5>
+                </section>
+                    <section class="card-body">
+                        <p class="card-text">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></p>
+                        <p class="card-text">ID: ${manager.getId()}</p>
+                        <p class="card-text">Office Number: ${manager.getOffice()}</p>
+                    </section>
+            </section>
+        </section>
+    </section>
+    `
+}
+
 // Creates intern card
 function internCardTemplate(employee) {
     return `
-    <section class="col">
-        <section class="card">
-            <section class="card-body">
-                <h5 class="card-title">${employee.getName()}</h5>
-                    <p class="card-text">${employee.getRole()}</p>
-                    <p class="card-text">${employee.getId()}</p>
-                    <p class="card-text">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></p>
-                    <p class="card-text">${employee.getSchool()}</p>
+    <section class="row justify-content-center row-cols-1 row-cols-md-2 g-4">
+        <section class="col">
+            <section class="card text-center">
+                <section class="card-header" style="background-color: blue; color: white">
+                    <h5 class="card-title">${employee.getName()}</h5>
+                </section>
+                    <section class="card-body">
+                        <p class="card-text">${employee.getRole()}</p>
+                        <p class="card-text">ID: ${employee.getId()}</p>
+                        <p class="card-text">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></p>
+                        <p class="card-text">School: ${employee.getSchool()}</p>
+                    </section>
             </section>
         </section>
     </section>
@@ -43,30 +67,18 @@ function internCardTemplate(employee) {
 // Creates engineer card
 function engineerCardTemplate(employee) {
     return `
-    <section class="col">
-        <section class="card">
-            <section class="card-body">
-                <h5 class="card-title">${employee.getName()}</h5>
+    <section class="row justify-content-center row-cols-1 row-cols-md-2 g-4">
+        <section class="col">
+            <section class="card text-center">
+                <section class="card-header" style="background-color: blue; color: white">
+                    <h5 class="card-title">${employee.getName()}</h5>
+                </section>
+                <section class="card-body">
                     <p class="card-text">${employee.getRole()}</p>
-                    <p class="card-text">${employee.getId()}</p>
+                    <p class="card-text">ID: ${employee.getId()}</p>
                     <p class="card-text">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></p>
-                    <p class="card-text">${employee.getGitHub()}</p>
-            </section>
-        </section>
-    </section>
-    `
-}
-
-// Creates manager card
-function managerCardTemplate(manager) {
-    return `
-    <section class="col">
-        <section class="card">
-            <section class="card-body">
-                <h5 class="card-title">${manager.getName()}</h5>
-                    <p class="card-text">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></p>
-                    <p class="card-text">${manager.getId()}</p>
-                    <p class="card-text">${manager.getOffice()}</p>
+                    <p class="card-text">GitHub Username: <a href="https://www.github.com/${employee.getGitHub()}" target="_blank">${employee.getGitHub()}</a></p>
+                </section>
             </section>
         </section>
     </section>
@@ -87,8 +99,8 @@ function createHTML(teamArray,manager) {
           <title>Team Profiles</title>
       </head>
       <body>
-          <header class="jumbotron">
-              <h1>My Team</h1>
+          <header class="jumbotron bg-info text-white">
+              <h1 class="text-center">My Team</h1>
           </header>
           <section class="container">`;
         let managerSection = managerCardTemplate(manager);
@@ -99,6 +111,7 @@ function createHTML(teamArray,manager) {
           `;
         for (let index = 0; index < teamArray.length; index++) {
             const employee = teamArray[index];
+            console.log(employee);
             let card = '';
             if(employee.getRole() === 'Intern') {
                 card = internCardTemplate(employee);
@@ -106,15 +119,13 @@ function createHTML(teamArray,manager) {
                 card = engineerCardTemplate(employee);
             }
             employeeSection += card;
-            console.log(card);
         }
-        console.log(employeeSection);
         return header+managerSection+employeeSection+footer;  
       }
 
 
 module.exports = {
-    rowTemplate: rowTemplate,
+    //rowTemplate: rowTemplate,
     managerCardTemplate: managerCardTemplate,
     internCardTemplate: internCardTemplate,
     engineerCardTemplate: engineerCardTemplate,

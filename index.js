@@ -69,12 +69,6 @@ function createTeam() {
 function engineerPrompts() {
     inquirer.prompt([
         {
-            type: 'list',
-            message: "Would you like to select an intern or an engineer?",
-            name: 'employeeType',
-            choices: ["Intern", "Engineer", "I don't want to add any more team members."]
-        },
-        {
             type: 'input',
             message: "What is your engineer's name?",
             name: 'name'
@@ -104,12 +98,6 @@ function engineerPrompts() {
 // Intern prompts
 function internPrompts() {
     inquirer.prompt([
-        {
-            type: 'list',
-            message: "Would you like to select an intern or an engineer?",
-            name: 'employeeType',
-            choices: ["Intern", "Engineer", "I don't want to add any more team members."]
-        },
         {
             type: 'input',
             message: "What is your intern's name?",
