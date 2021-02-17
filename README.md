@@ -17,7 +17,7 @@ This application can be found at https://smlisk0630.github.io/team-profile-gener
 npm install team-profile-generator
 ```
 ## User Stories
-[placeholder]
+![Team Profile Generator Video](assets/Team_Profile_Generator.gif)
 ## Usage
 Takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.
 ## Credits
